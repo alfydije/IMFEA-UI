@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:imfea/header_drawer.dart';
 import 'package:imfea/util/emoticon_face.dart';
 import 'package:imfea/util/exercise_tile.dart';
 
-class home extends StatefulWidget{
+class home extends StatefulWidget {
   const home({Key? key}) : super(key: key);
 
   @override
   State<home> createState() => _homeState();
-
 }
 
 class _homeState extends State<home> {
@@ -17,10 +17,44 @@ class _homeState extends State<home> {
     return Scaffold(
       backgroundColor: Colors.blue[800],
       bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.message), label: ''),
-        BottomNavigationBarItem(icon: Icon(Icons.newspaper), label: ''),        
+        const BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+        const BottomNavigationBarItem(icon: Icon(Icons.message), label: ''),
+        const BottomNavigationBarItem(icon: Icon(Icons.newspaper), label: ''),
       ]),
+      drawer: Drawer(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const MyHeaderDrawer(),
+              ListTile(
+                leading: const Icon(Icons.home),
+                title: const Text("Beranda"),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(Icons.settings),
+                title: const Text("Pengaturan"),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(Icons.money ),
+                title: const Text("Berlangganan"),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(Icons.people),
+                title: const Text("Profil"),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: const Icon(Icons.logout),
+                title: const Text("Log Out"),
+                onTap: () {},
+              ),
+            ],
+          ),
+        ),
+      ),
       body: SafeArea(
         child: Column(
           children: [
@@ -28,224 +62,204 @@ class _homeState extends State<home> {
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Column(
                 children: [
-         //gretings row
-          Row(  
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-            //Hi alfii!
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text('Hi alfii!',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-          SizedBox(
-            height: 8,
-          ),
-          Text('14 feb 2023',
-          style: TextStyle(color: Colors.blue[200]),
-          ),
-              ],
-            ),
-            //Notifications
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.blue[600],
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Icon(Icons.notifications,
-              color: Colors.white,
-              ),
-            )
-          ],
-          ),
-
-          SizedBox(
-            height: 25  ,
-          ),
-
-          //Search bar
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.blue[600],
-            borderRadius: BorderRadius.circular(12),
-          ),
-          padding: EdgeInsets.all(12),
-          child: Row(
-            children: [
-              Icon(
-                Icons.search,
-                color: Colors.white,
-              ),
-              SizedBox(
-                width: 5,
-              ),
-              Text('Search',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-              ),
-            ],
-            ),
-        ),
-
-        SizedBox(
-            height: 25  ,
-          ),
-
-          //take your exrcise!
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('Take your exrcise!',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-              ),
-              Icon(
-                Icons.more_horiz,
-                color: Colors.white,
-              ),
-            ],
-          ),
-
-          SizedBox(
-            height: 25  ,
-          ),
-
-          //4 diff face
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              // news feed
-              Column(
-                children: [
-                  EmoticonFace(emoticonFace: '📰',
-                  ),
-                  SizedBox(height: 8,
-                  ),
-                  Text('News Feed',
-                  style: TextStyle(color: Colors.white),
-                  ),
-                ],
-                ),
-
-              // fine
-              Column(
-                children: [
-                  EmoticonFace(
-                    emoticonFace: '📰',
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text(
-                    'News Feed',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
-
-              // good
-              Column(
-                children: [
-                  EmoticonFace(
-                    emoticonFace: '📰',
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text(
-                    'News Feed',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
-
-              // excllent
-              Column(
-                children: [
-                  EmoticonFace(
-                    emoticonFace: '📰',
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  Text(
-                    'News Feed',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ],
-      ), 
-        ),
-        SizedBox(
-          height: 25,
-        ),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.all(25),
-              color: Colors.grey[200],
-              child: Center(
-                child: Column(children: [
-                  
-                  //exercises heading
+                  //gretings row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text('Exerxises',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
+                      //button login
+                      ElevatedButton(
+                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.blue[300]!)),
+                        onPressed: (){
+                          ScaffoldMessenger.of(context)
+                          .showSnackBar(const SnackBar(content: Text('Log In / Registrasi')));
+                        }, 
+                        child: const Text('Log In / Registrasi'),
                       ),
-                      ),
-                      Icon(Icons.more_horiz),
+                      //Notifications
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.blue[600],
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Icon(
+                          Icons.notifications,
+                          color: Colors.white,
+                        ),
+                      )
                     ],
                   ),
-                  SizedBox(
-                    height: 20,
+
+                  const SizedBox(
+                    height: 25,
                   ),
-        
-                  //end exercise
-                  Expanded(
-                    child: ListView(
+
+                  //Search bar
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.blue[600],
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: const EdgeInsets.all(12),
+                    child: Row(
                       children: [
-                          ExcerciseTile(
+                        const Icon(
+                          Icons.search,
+                          color: Colors.white,
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        const Text(
+                          'Search',
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  const SizedBox(
+                    height: 25,
+                  ),
+
+                  //take your exrcise!
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Text(
+                        'Take your exrcise!',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const Icon(
+                        Icons.more_horiz,
+                        color: Colors.white,
+                      ),
+                    ],
+                  ),
+
+                  const SizedBox(
+                    height: 25,
+                  ),
+
+                  //4 diff face
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      // news feed
+                      Column(
+                        children: [
+                          const EmoticonFace(
+                            emoticonFace: '📝',
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          const Text(
+                            'Quiz',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+
+                      // fine
+                      Column(
+                        children: [
+                          const EmoticonFace(
+                            emoticonFace: '💻',
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          const Text(
+                            'Webinar',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+
+                      // good
+                      Column(
+                        children: [
+                          const EmoticonFace(
+                            emoticonFace: '📚',
+                          ),
+                          const SizedBox(
+                            height: 8,
+                          ),
+                          const Text(
+                            'Materi',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.all(25),
+                color: Colors.grey[200],
+                child: Center(
+                  child: Column(
+                    children: [
+                      //exercises heading
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'News',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          const Icon(Icons.more_horiz),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+
+                      //end exercise
+                      Expanded(
+                          child: ListView(
+                        children: [
+                          const ExcerciseTile(
                             icon: Icons.favorite,
-                            excerciseName: 'Speaking Skills',
+                            excerciseName: 'Pelatihan Pengelasan telah dilaksanakan',
                             numberOfExcercises: 16,
                             color: Colors.red,
                           ),
-                          ExcerciseTile(
+                          const ExcerciseTile(
                             icon: Icons.person,
-                            excerciseName: 'Reading Skills',
+                            excerciseName: '17 Februari 2023 Webinar mesin',
                             numberOfExcercises: 8,
                             color: Color.fromARGB(255, 16, 70, 131),
                           ),
-                          ExcerciseTile(
+                          const ExcerciseTile(
                             icon: Icons.star,
-                            excerciseName: 'Writing Skills',
+                            excerciseName: 'Besok 12 agustus 2023 ada webinar !',
                             numberOfExcercises: 26,
                             color: Color.fromARGB(255, 211, 202, 121),
                           ),
-                      ],
-                    )
-                  )
-                ],
+                        ],
+                      ))
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
         ),
       ),
     );
