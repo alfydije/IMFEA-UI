@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:imfea/header_drawer.dart';
 import 'package:imfea/util/emoticon_face.dart';
 import 'package:imfea/util/exercise_tile.dart';
+import 'package:imfea/screens/home_screen.dart';
+import 'package:imfea/LoginPage.dart';
+import 'RegisterPage.dart';
 
 class home extends StatefulWidget {
   const home({Key? key}) : super(key: key);
@@ -13,14 +16,27 @@ class home extends StatefulWidget {
 class _homeState extends State<home> {
   @override
   Widget build(BuildContext context) {
-    var excerciseTile = ExcerciseTile;
     return Scaffold(
       backgroundColor: Colors.blue[800],
       bottomNavigationBar: BottomNavigationBar(items: [
         const BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
         const BottomNavigationBarItem(icon: Icon(Icons.message), label: ''),
-        const BottomNavigationBarItem(icon: Icon(Icons.newspaper), label: ''),
-      ]),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.newspaper),
+          label: '',
+          // Wrap the item with a GestureDetector and handle the onTap event
+        //   InkWell(
+        //   onTap: () {
+        //     Navigator.pushReplacement(
+        //       context,
+        //       MaterialPageRoute(builder: (context) => HomeScreen()),
+        //     );
+        //   },
+        // )
+        )]
+      ),
+      appBar: AppBar(backgroundColor: Colors.blue[800],
+      ),
       drawer: Drawer(
         child: SingleChildScrollView(
           child: Column(
@@ -29,27 +45,46 @@ class _homeState extends State<home> {
               ListTile(
                 leading: const Icon(Icons.home),
                 title: const Text("Beranda"),
-                onTap: () {},
-              ),
+                onTap: () {Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => home()),
+                );
+                },
+                  ),
               ListTile(
                 leading: const Icon(Icons.settings),
                 title: const Text("Pengaturan"),
                 onTap: () {},
               ),
               ListTile(
-                leading: const Icon(Icons.money ),
+                leading: const Icon(Icons.money),
                 title: const Text("Berlangganan"),
                 onTap: () {},
               ),
               ListTile(
-                leading: const Icon(Icons.people),
+                leading: const Icon(Icons.newspaper),
+                title: const Text("Berita"),
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.person),
                 title: const Text("Profil"),
                 onTap: () {},
               ),
               ListTile(
-                leading: const Icon(Icons.logout),
-                title: const Text("Log Out"),
-                onTap: () {},
+                leading: const Icon(Icons.login),
+                title: const Text("Masuk"),
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                  );
+                },
               ),
             ],
           ),
@@ -62,37 +97,9 @@ class _homeState extends State<home> {
               padding: const EdgeInsets.symmetric(horizontal: 25.0),
               child: Column(
                 children: [
-                  //gretings row
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      //button login
-                      ElevatedButton(
-                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(Colors.blue[300]!)),
-                        onPressed: (){
-                          ScaffoldMessenger.of(context)
-                          .showSnackBar(const SnackBar(content: Text('Log In / Registrasi')));
-                        }, 
-                        child: const Text('Log In / Registrasi'),
-                      ),
-                      //Notifications
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Colors.blue[600],
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const Icon(
-                          Icons.notifications,
-                          color: Colors.white,
-                        ),
-                      )
-                    ],
-                  ),
-
                   const SizedBox(
                     height: 25,
                   ),
-
                   //Search bar
                   Container(
                     decoration: BoxDecoration(
@@ -110,7 +117,7 @@ class _homeState extends State<home> {
                           width: 5,
                         ),
                         const Text(
-                          'Search',
+                          'Cari',
                           style: TextStyle(
                             color: Colors.white,
                           ),
@@ -128,7 +135,7 @@ class _homeState extends State<home> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text(
-                        'Take your exrcise!',
+                        'Belajar Apa Hari Ini ?',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 18,
@@ -160,7 +167,7 @@ class _homeState extends State<home> {
                             height: 8,
                           ),
                           const Text(
-                            'Quiz',
+                            'Kuis',
                             style: TextStyle(color: Colors.white),
                           ),
                         ],
@@ -217,7 +224,7 @@ class _homeState extends State<home> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text(
-                            'News',
+                            'Berita',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
@@ -236,7 +243,8 @@ class _homeState extends State<home> {
                         children: [
                           const ExcerciseTile(
                             icon: Icons.favorite,
-                            excerciseName: 'Pelatihan Pengelasan telah dilaksanakan',
+                            excerciseName:
+                                'Pelatihan Pengelasan',
                             numberOfExcercises: 16,
                             color: Colors.red,
                           ),
@@ -248,12 +256,14 @@ class _homeState extends State<home> {
                           ),
                           const ExcerciseTile(
                             icon: Icons.star,
-                            excerciseName: 'Besok 12 agustus 2023 ada webinar !',
+                            excerciseName:
+                                'Besok 12 agustus',
                             numberOfExcercises: 26,
                             color: Color.fromARGB(255, 211, 202, 121),
                           ),
                         ],
                       ))
+                      
                     ],
                   ),
                 ),
