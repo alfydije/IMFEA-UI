@@ -1,7 +1,7 @@
 //now let's for the details screen
 
 import 'package:flutter/material.dart';
-import 'package:imfea/models/news_model.dart';
+import 'package:imfea/berita/models/news_model.dart';
 
 class DetailsScreen extends StatefulWidget {
   DetailsScreen(this.data, {Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.blue[800],
         elevation: 0.0,
         iconTheme: IconThemeData(color: Colors.white),
       ),

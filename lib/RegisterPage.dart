@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'LoginPage.dart';
+import 'home.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class _RegisterPageState extends State<RegisterPage> {
         );
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => LoginPage()),
+          MaterialPageRoute(builder: (context) => home()),
         );
       } catch (e) {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -138,18 +139,34 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   _gap(),
                   TextFormField(
-                    onSaved: (value) => _konfirpass = value,
+                    onSaved: (value) => _password = value,
                     validator: (value) {
-                      // add Alamat
+                      //add password
                       if (value == null || value.isEmpty) {
                         return 'Tidak Boleh Kosong';
                       }
+
+                      if (value.length < 6) {
+                        return 'Password harus memiliki 6 karakter';
+                      }
+                      return null;
                     },
-                    decoration: const InputDecoration(
-                      labelText: 'Konfirmasi Password',
-                      hintText: 'Masukan Password Anda',
-                      border: OutlineInputBorder(),
-                    ),
+                    obscureText: !_isPasswordVisible,
+                    decoration: InputDecoration(
+                        labelText: 'Konfirmasi Password',
+                        hintText: 'Masukan Pasword Anda',
+                        // prefixIcon: const Icon(Icons.lock_outline_rounded),
+                        border: const OutlineInputBorder(),
+                        suffixIcon: IconButton(
+                          icon: Icon(_isPasswordVisible
+                              ? Icons.visibility_off
+                              : Icons.visibility),
+                          onPressed: () {
+                            setState(() {
+                              _isPasswordVisible = !_isPasswordVisible;
+                            });
+                          },
+                        )),
                   ),
                   _gap(),
                   ElevatedButton(

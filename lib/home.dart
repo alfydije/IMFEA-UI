@@ -4,7 +4,8 @@ import 'package:imfea/util/emoticon_face.dart';
 import 'package:imfea/util/exercise_tile.dart';
 import 'package:imfea/screens/home_screen.dart';
 import 'package:imfea/LoginPage.dart';
-import 'RegisterPage.dart';
+import 'package:imfea/webinar/web_screen.dart';
+import 'package:imfea/materi/screens/home_materi.dart';
 
 class home extends StatefulWidget {
   const home({Key? key}) : super(key: key);
@@ -18,23 +19,6 @@ class _homeState extends State<home> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blue[800],
-      bottomNavigationBar: BottomNavigationBar(items: [
-        const BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-        const BottomNavigationBarItem(icon: Icon(Icons.message), label: ''),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.newspaper),
-          label: '',
-          // Wrap the item with a GestureDetector and handle the onTap event
-        //   InkWell(
-        //   onTap: () {
-        //     Navigator.pushReplacement(
-        //       context,
-        //       MaterialPageRoute(builder: (context) => HomeScreen()),
-        //     );
-        //   },
-        // )
-        )]
-      ),
       appBar: AppBar(backgroundColor: Colors.blue[800],
       ),
       drawer: Drawer(
@@ -62,12 +46,33 @@ class _homeState extends State<home> {
                 onTap: () {},
               ),
               ListTile(
+                leading: const Icon(Icons.web),
+                title: const Text("Webinar"),
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => WebScreen()),
+                  );
+                },
+              ),
+              ListTile(
                 leading: const Icon(Icons.newspaper),
                 title: const Text("Berita"),
                 onTap: () {
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(builder: (context) => HomeScreen()),
+                  );
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.book),
+                title: const Text("Materi"),
+                onTap: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => HomeMateri()),
                   );
                 },
               ),
@@ -188,8 +193,7 @@ class _homeState extends State<home> {
                           ),
                         ],
                       ),
-
-                      // good
+                      
                       Column(
                         children: [
                           const EmoticonFace(
@@ -216,7 +220,7 @@ class _homeState extends State<home> {
               child: Container(
                 padding: const EdgeInsets.all(25),
                 color: Colors.grey[200],
-                child: Center(
+                child: SingleChildScrollView(
                   child: Column(
                     children: [
                       //exercises heading
@@ -224,7 +228,7 @@ class _homeState extends State<home> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           const Text(
-                            'Berita',
+                            'Jadwal Pelatihan',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 20,
@@ -237,33 +241,151 @@ class _homeState extends State<home> {
                         height: 20,
                       ),
 
-                      //end exercise
-                      Expanded(
-                          child: ListView(
-                        children: [
-                          const ExcerciseTile(
-                            icon: Icons.favorite,
-                            excerciseName:
-                                'Pelatihan Pengelasan',
-                            numberOfExcercises: 16,
-                            color: Colors.red,
+                      // Add your content here
+
+                      SizedBox(height: 10),
+                      Container(
+                        width: 380,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: RichText(
+                              textAlign: TextAlign.start,
+                              text: TextSpan(
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: 'PELATIHAN PENGELASAN DASAR\n',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: 'Pemateri : Alfiyah\n',
+                                  ),
+                                  TextSpan(
+                                    text: 'Tanggal : 7 Juli 2023\n',
+                                  ),
+                                  TextSpan(
+                                    text: 'Waktu : 08.00 - Selesai\n',
+                                  ),
+                                  TextSpan(
+                                    text: 'https://linktr.ee/pmipolindra',
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                          const ExcerciseTile(
-                            icon: Icons.person,
-                            excerciseName: '17 Februari 2023 Webinar mesin',
-                            numberOfExcercises: 8,
-                            color: Color.fromARGB(255, 16, 70, 131),
+                        ),
+                      ),
+
+                      SizedBox(height: 10),
+                      Container(
+                        width: 380,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: RichText(
+                textAlign: TextAlign.start,
+                text: TextSpan(
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: 'PELATIHAN PENGELASAN DASAR\n',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'Pemateri : Azzahra\n',
+                    ),
+                    TextSpan(
+                      text: 'Tanggal : 12 Juni 2023\n',
+                    ),
+                    TextSpan(
+                      text: 'Waktu : 12.00 - Selesai\n',
+                    ),
+                    TextSpan(
+                      text: 'https://linktr.ee/pmipolindra',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+
+                      SizedBox(height: 10),
+                      Container(
+                        width: 380,
+                        height: 150,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: RichText(
+                              textAlign: TextAlign.start,
+                              text: TextSpan(
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 16,
+                                ),
+                                children: [
+                                  TextSpan(
+                                    text: 'PELATIHAN PENGELASAN DASAR\n',
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  TextSpan(
+                                    text: 'Pemateri : Siffa\n',
+                                  ),
+                                  TextSpan(
+                                    text: 'Tanggal : 3 Agustus 2023\n',
+                                  ),
+                                  TextSpan(
+                                    text: 'Waktu : 15.00 - Selesai\n',
+                                  ),
+                                  TextSpan(
+                                    text: 'https://linktr.ee/pmipolindra',
+                                    style: TextStyle(
+                                      color: Colors.blue,
+                                      decoration: TextDecoration.underline,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
-                          const ExcerciseTile(
-                            icon: Icons.star,
-                            excerciseName:
-                                'Besok 12 agustus',
-                            numberOfExcercises: 26,
-                            color: Color.fromARGB(255, 211, 202, 121),
-                          ),
-                        ],
-                      ))
-                      
+                        ),
+                      ),
                     ],
                   ),
                 ),

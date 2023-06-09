@@ -112,13 +112,11 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     _gap(),
                     TextFormField(
-                    
                       // onSaved: (value) => _password = value,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter password';
                         }
-
                         if (value.length < 6) {
                           return 'Password must be at least 6 characters';
                         }
