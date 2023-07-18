@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:imfea/home.dart';
 
 class WebScreen extends StatefulWidget {
   const WebScreen({Key? key}) : super(key: key);
@@ -32,7 +33,12 @@ class _WebScreenState extends State<WebScreen> {
         actions: [
           IconButton(
             onPressed: () {
-              // Navigasi ke halaman notifikasi
+              Navigator.pop(
+                context);
+                Navigator.push(
+                  context,
+                MaterialPageRoute(builder: (context) => home()),
+              );
             },
             icon: Icon(
               Icons.notifications_outlined,
@@ -41,6 +47,7 @@ class _WebScreenState extends State<WebScreen> {
           ),
         ],
       ),
+      
       body: SingleChildScrollView(
         child: Center(
           child: Column(
@@ -150,6 +157,7 @@ class _WebScreenState extends State<WebScreen> {
                 ),
               ),
 
+              SizedBox(height: 10),
               Container(
                 width: 380,
                 height: 150,
@@ -201,6 +209,7 @@ class _WebScreenState extends State<WebScreen> {
                 ),
               ),
 
+              SizedBox(height: 10),
               Container(
                 width: 380,
                 height: 150,
@@ -252,6 +261,7 @@ class _WebScreenState extends State<WebScreen> {
                 ),
               ),
 
+              SizedBox(height: 10),
               Container(
                 width: 380,
                 height: 150,
@@ -303,6 +313,7 @@ class _WebScreenState extends State<WebScreen> {
                 ),
               ),
 
+              SizedBox(height: 10),
               Container(
                 width: 380,
                 height: 150,

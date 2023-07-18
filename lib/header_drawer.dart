@@ -28,9 +28,9 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
                 )
               ),
             ),
-            const Text("Berita",
+            const Text("Azzahra",
             style: TextStyle(color:Colors.white, fontSize: 20),),
-            const Text("Webinar",
+            const Text("Salsabila",
               style: TextStyle(color: Colors.white, fontSize: 20),
             ),
           ],

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "268745332954",
+    "project_id": "imfea-auth",
+    "storage_bucket": "imfea-auth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:268745332954:android:f0c9ba8b557ccaa3a2ede3",
+        "android_client_info": {
+          "package_name": "com.example.imfea"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "268745332954-njl5b2p6ipcdnmbrlpptvh8rcntc9ber.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBPJzx0YDsFiwJGQU4zVqqkLxcLtXdOfA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "268745332954-njl5b2p6ipcdnmbrlpptvh8rcntc9ber.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

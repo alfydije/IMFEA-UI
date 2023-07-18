@@ -1,7 +1,7 @@
 import 'package:imfea/materi/constants.dart';
 import 'package:imfea/materi/model/product_model.dart';
 import 'package:flutter/material.dart';
-import'package:imfea/home.dart';
+import 'package:imfea/home.dart';
 import 'components/category.dart';
 
 class HomeMateri extends StatefulWidget {
@@ -20,7 +20,7 @@ class _HomeMateriState extends State<HomeMateri> {
         elevation: 0.0,
         backgroundColor: Colors.blue[800],
         title: Text(
-          "Berita",
+          "Materi",
           style: TextStyle(color: Colors.white),
         ),
         actions: [
@@ -45,8 +45,7 @@ class _HomeMateriState extends State<HomeMateri> {
               child: Column(
                 children: [
                   Row(
-                    children: [
-                    ],
+                    children: [],
                   ),
                   const SizedBox(
                     height: 20,

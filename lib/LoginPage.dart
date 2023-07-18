@@ -1,10 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:imfea/RegisterPage.dart';
 import 'package:imfea/home.dart';
 
-// import 'package:firebase_auth/firebase_auth.dart';
-// import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -15,56 +14,45 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   bool _isPasswordVisible = false;
-  // bool _rememberMe = false;
+  bool _rememberMe = false;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  // final FirebaseAuth _auth = FirebaseAuth.instance;
-  // final FirebaseFirestore _db = FirebaseFirestore.instance;
-  // String? _email, _password;
-  // bool _isLoading = false;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseFirestore _db = FirebaseFirestore.instance;
+  String? _email, _password;
+  bool _isLoading = false;
 
-  // void _submit() async {
-  //   final form = _formKey.currentState;
-  //   if (form?.validate() ?? false) {
-  //     form?.save();
-  //     setState(() {
-  //       _isLoading = true;
-  //     });
-  //     try {
-  //       // Get user data from firestore
-  //       final QuerySnapshot<Map<String, dynamic>> snapshot = await _db
-  //           .collection('users')
-  //           .where('email', isEqualTo: _email)
-  //           .get();
-  //       if (snapshot.docs.isNotEmpty) {
-  //         final userData = snapshot.docs.first.data();
-  //         final userCredential = await _auth.signInWithEmailAndPassword(
-  //           email: _email!,
-  //           password: _password!,
-  //         );
-  //         if (userCredential.user != null) {
-  //           setState(() {
-  //             _isLoading = false;
-  //           });
-  //           Navigator.push(
-  //             context,
-  //             MaterialPageRoute(
-  //               builder: (context) => ResponsiveNavBarPage(
-  //                 // name: name,
-  //                 // email: email,
-  //               ),
-  //             ),
-  //           );
-  //         }
-  //       }
-  //     } catch (e) {
-  //       print(e);
-  //       setState(() {
-  //         _isLoading = false;
-  //       });
-  //     }
-  //   }
-  // }
+  void _submit() async {
+    final form = _formKey.currentState;
+    if (form?.validate() ?? false) {
+      form?.save();
+      setState(() {
+        _isLoading = true;
+      });
+      try {
+        final userCredential = await _auth.signInWithEmailAndPassword(
+          email: _email!,
+          password: _password!,
+        );
+        if (userCredential.user != null) {
+          setState(() {
+            _isLoading = false;
+          });
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => home(),
+            ),
+          );
+        }
+      } catch (e) {
+        print(e);
+        setState(() {
+          _isLoading = false;
+        });
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,8 +84,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     _gap(),
                     TextFormField(
-                    
-                      // onSaved: (value) => _email = value,
+                      onSaved: (value) => _email = value,
                       validator: (value) {
                         // add email validation
                         if (value == null || value.isEmpty) {
@@ -112,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     _gap(),
                     TextFormField(
-                      // onSaved: (value) => _password = value,
+                      onSaved: (value) => _password = value,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Please enter password';
@@ -175,15 +162,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                           ),
                         ),
-                        onPressed: ()  {
-                          //
-
-                        
-                            Navigator.push(context,
-                              MaterialPageRoute(builder: (context) {
-                            return home();
-                          }));
-                        },
+                        onPressed: _submit,
                       ),
                     ),
                     _gap(),
@@ -228,4 +207,3 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _gap() => const SizedBox(height: 16);
 }
-

@@ -1,8 +1,6 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:imfea/berita/models/news_model.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import '../screens/details_screen.dart';
 
 class NewsListTile extends StatefulWidget {
